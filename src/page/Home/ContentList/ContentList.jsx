@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ListItem from './ListItem/ListItem.jsx';
-import Loading from '../../Components/Loading/Loading';
+import Loading from 'components/Loading/Loading';
 import { getListData } from '../../../actions/contentListAction'
  
 /**

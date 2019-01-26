@@ -6,7 +6,7 @@ const initState = {
 
 const getListData = (state, action) => {
 
-    if (action.page === 0) {
+    if (action.currentPage === 0) {
         return {...state, list: action.obj.data.poilist }
     } else {
         let list = state.list;

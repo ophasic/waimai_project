@@ -100,7 +100,7 @@ module.exports = function(webpackEnv) {
         : false
       : isEnvDevelopment && 'cheap-module-source-map',
     entry: [
-      isEnvDevelopment &&
+      isEnvDevelopment && 
         require.resolve('react-dev-utils/webpackHotDevClient'),
       paths.appIndexJs,
     ].filter(Boolean),
@@ -175,6 +175,7 @@ module.exports = function(webpackEnv) {
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),
       alias: {
+        'components': path.resolve(paths.appSrc, 'page/Components'),
         'react-native': 'react-native-web',
       },
       plugins: [
