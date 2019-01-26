@@ -5,8 +5,16 @@ const initState = {
 };
 
 const getListData = (state, action) => {
-    console.log('action', action)
-    return {...state, list: action.obj.data.poilist }
+
+    if (action.page === 0) {
+        return {...state, list: action.obj.data.poilist }
+    } else {
+        let list = state.list;
+        
+        return {...state, list: list.concat(action.obj.data.poilist)}
+    }
+
+   
 }
 
 const contentListReducer = (state = initState, action) => {

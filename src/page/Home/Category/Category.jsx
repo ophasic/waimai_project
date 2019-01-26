@@ -2,8 +2,6 @@ import './Category.scss'
 
 import React from 'react';
 
-import axios from 'axios';
-
 import { connect } from 'react-redux';
 
 import { getHeaderData } from '../../../actions/categoryActions'
@@ -31,7 +29,7 @@ class Category extends React.Component {
         return items.map((item, index) => {
             return (
                 <div key={index} className="category-item">
-                    <img className="item-icon" src={item.url} />
+                    <img className="item-icon" src={item.url} alt="" />
                     <p className="item-name">{item.name}</p>
                 </div>
             )
