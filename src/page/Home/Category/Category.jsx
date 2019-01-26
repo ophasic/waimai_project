@@ -20,28 +20,27 @@ class Category extends React.Component {
     }
 
     fetchData() {
-        axios({
-            method: 'get',
-            url: '/json/head.json'
-        }).then((res) => {
-            console.log(res)
-            this.props.dispatch(getHeaderData(res.data))
-        });
+        this.props.dispatch(getHeaderData())
     }
 
     renderItems() {
         let items = this.props.items;
 
+        items = items.splice(0, 8);
+
         return items.map((item, index) => {
             return (
-                <div key={index}>{item.name}</div>
+                <div key={index} className="category-item">
+                    <img className="item-icon" src={item.url} />
+                    <p className="item-name">{item.name}</p>
+                </div>
             )
         })
     }
 
     render() {
         return (
-            <div className="category-container">
+            <div className="category-container cle">
                  {this.renderItems()}
             </div>
         )

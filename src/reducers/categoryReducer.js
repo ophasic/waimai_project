@@ -5,7 +5,6 @@ const initState = {
 };
 
 const getCategory = (state, action) => {
-    console.log('action', action)
     return {...state, items: action.obj.data.primary_filter}
 }
 
