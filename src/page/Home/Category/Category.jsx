@@ -40,7 +40,7 @@ class Category extends React.Component {
 
     render() {
         return (
-            <div className="category-container cle">
+            <div className="category-container clearfix">
                  {this.renderItems()}
             </div>
         )
