@@ -1,4 +1,4 @@
-import './BottomBar.scss'
+import './BottomBar.scss';
 
 import React, { Component } from 'react';
 
