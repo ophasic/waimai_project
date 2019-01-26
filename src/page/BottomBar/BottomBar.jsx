@@ -12,7 +12,8 @@ import { changeTab } from '../../actions/tabAction'
  */
 class BottomBar extends Component {
   constructor(props) {
-      super(props)
+      super(props);
+      this.state = {};
   }
 
 
@@ -29,7 +30,7 @@ class BottomBar extends Component {
         let cls = item.key + ' btn-item';
         let name = item.name;
 
-        if (item.key == this.props.activeKey) {
+        if (item.key === this.props.activeKey) {
             cls += ' active';
         }
 
