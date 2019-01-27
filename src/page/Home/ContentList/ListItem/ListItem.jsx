@@ -84,7 +84,6 @@ class ListItem extends React.Component {
      * @param {*} data 
      */
     renderMeituanFlag(data) {
-        console.log(data)
         if(data.delivery_type) {
             return <div className="item-meituan-flag">美团专送</div>
         }

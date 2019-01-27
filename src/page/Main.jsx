@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import BottomBar from './BottomBar/BottomBar'
 // import Home from './Home/Home';
+// import Order from './Order/Order';
+import My from './My/My'
 
 import { connect } from 'react-redux';
-import Order from './Order/Order';
 
 class Main extends Component {
   constructor(props) {
@@ -13,10 +14,10 @@ class Main extends Component {
 
   render() {
     // <Home />
+    // <Order />
     return (
       <div>
-         
-         <Order />
+         <My />
          <BottomBar />
       </div>
     );

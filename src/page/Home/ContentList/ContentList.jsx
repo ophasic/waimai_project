@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ListItem from './ListItem/ListItem.jsx';
-import Loading from 'components/Loading/Loading';
+import ScrollView from 'components/ScrollView/ScorllView';
 import { getListData } from '../../../actions/contentListAction'
  
 /**
@@ -28,33 +28,15 @@ class ContentList extends React.Component {
     }
 
     onLoadPage () {
-        let clientHeight = document.documentElement.clientHeight;
-        let scrollHeight = document.body.scrollHeight;
-        let scrollTop = document.documentElement.scrollTop;
-
-        let proLoadDis = 30;
-
-        if (scrollTop + clientHeight >= scrollHeight - proLoadDis) {
-            this.page++;
-            // 做多滚动3次
-            if (this.page > 3){
-                this.setState({
-                    isend: true,
-                    loadingText: '已完成'
-                })
-            } else {
-                this.fetchData(this.page)
-            }
-
+        this.page++;
+        // 做多滚动3次
+        if (this.page > 3){
+            this.setState({
+                isend: true
+            })
+        } else {
+            this.fetchData(this.page)
         }
-    }
-
-    componentWillMount () {
-        window.addEventListener('scroll', this.onLoadPage.bind(this))
-    }
-
-    componentWillUnmount () {
-        window.removeEventListener('scroll', this.onLoadPage.bind(this))
     }
 
     fetchData(page) {
@@ -78,8 +60,9 @@ class ContentList extends React.Component {
                     <span>附近商家</span>
                     <span className="title-line"></span>
                 </h4>
-                {this.renderItems()}
-                <Loading isend={this.state.isend} />
+                <ScrollView loadCallback={this.onLoadPage.bind(this)} isend={this.state.isend}>
+                    {this.renderItems()}
+                </ScrollView>
             </div>
         )
     }

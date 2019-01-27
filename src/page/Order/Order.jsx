@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 
 import { getOrderData } from '../../actions/orderActions';
 
+import ListItem from './ListItem/ListItem';
+
+import ScrollView from 'components/ScrollView/ScorllView';
 /**
  * @constructor <Order />
  * @description 订单tab
@@ -13,10 +16,24 @@ import { getOrderData } from '../../actions/orderActions';
 class Order extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+
+        this.state = {
+            isend: false
+        };
 
         this.page = 0;
         this.fetchData(this.page)
+    }
+
+    loadPage () {
+        this.page++;
+        if (this.page > 3) {
+            this.setState({
+                isend: true
+            })
+        } else {
+            this.fetchData(this.page)
+        }
     }
 
     fetchData(page) {
@@ -27,7 +44,7 @@ class Order extends React.Component {
         let list = this.props.list;
 
         return list.map((item, index) => {
-            return <div key={index}>{item.poi_name}</div>
+            return <ListItem key={index} itemData={item} />
         })
     }
 
@@ -35,7 +52,9 @@ class Order extends React.Component {
         return (
             <div className="order">
                 <div className="header">订单</div>
-                <div className="order-list">{this.renderList()}</div>
+                <ScrollView loadCallback={this.loadPage.bind(this)} isend={this.state.isend}>
+                    <div className="order-list">{this.renderList()}</div>
+                </ScrollView>
             </div>
         )
     }
