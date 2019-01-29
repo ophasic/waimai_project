@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { changeTab } from '../../actions/tabAction'
+// import { changeTab } from '../../actions/tabAction';
+
+import { NavLink, withRouter } from 'react-router-dom';
 
 /**
  * @constructor <BottomBar>
@@ -18,9 +20,10 @@ class BottomBar extends Component {
 
 
   changeTab = (item) => {
-    this.props.dispatch(changeTab({
-        activeKey: item.key
-    }))
+    // this.props.dispatch(changeTab({
+    //     activeKey: item.key
+    // }))
+    this.props.history.replace(item.key)
   }
 
   renderItems(){
@@ -30,14 +33,12 @@ class BottomBar extends Component {
         let cls = item.key + ' btn-item';
         let name = item.name;
 
-        if (item.key === this.props.activeKey) {
-            cls += ' active';
-        }
-
         return (
-            <div key={index} className={cls} onClick={()=>this.changeTab(item)}>
-            <div className="tab-icon"></div>
-            <div className="btn-name">{name}</div>
+            <div key={index} className={cls}>
+                <NavLink replace={true} to={"/" + item.key} activeClassName="active" onClick={()=>this.changeTab(item)}>
+                    <div className="tab-icon"></div>
+                    <div className="btn-name">{name}</div>
+                </NavLink>
             </div>
         )
     })
@@ -52,9 +53,9 @@ class BottomBar extends Component {
   }
 }
 
-export default connect(
+export default withRouter(connect(
     state => ({
         tabs: state.tabReducre.tabs,
         activeKey: state.tabReducre.activeKey,
     })
-)(BottomBar);
+)(BottomBar));

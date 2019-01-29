@@ -27,9 +27,8 @@
         font-size: 14px;
         display: inline-block;
         color: #fff;
-        vertical-align: px2rem(12px);
+        vertical-align: px2rem(14px);
         margin-left: px2rem(8px);
-        margin-right: px2rem(19px);
         &:after {
             content: '';
             display: block;
@@ -39,7 +38,7 @@
             background-image: url('./img/arrowIcon.png');
             background-size: cover;
             right: px2rem(-15px);
-            top: px2rem(-1px);
+            top: px2rem(-0.5px);
         }
     }
     .search-btn {

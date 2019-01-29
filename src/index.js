@@ -1,21 +1,21 @@
 import React from 'react';
-import { render } from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
-import './index.css';
-import './static/reset.css'
+import ReactDOM from "react-dom";
+
+import { Provider } from 'react-redux';
+
 import App from './App';
-import { Provider } from 'react-redux'
-import * as serviceWorker from './serviceWorker';
-import rootReducer from './reducers'
-import thunk from 'redux-thunk'
 
+import './static/reset.css'
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+import { store, history } from './store.js';
 
-render(
+import { ConnectedRouter } from 'react-router-redux';
+
+ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <ConnectedRouter history={history}>
+            <App />
+        </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
 );
-serviceWorker.unregister();
